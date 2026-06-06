@@ -1,0 +1,71 @@
+dataset_kwargs:
+  data_files:
+    test: data/3class_undiac.jsonl
+dataset_path: json
+doc_to_target: '{{label}}'
+doc_to_text: 'You are given an Arabic word and a Hebrew word.
+
+
+  Your task is to determine whether they are:
+
+  - TRUE_COGNATE
+
+  - FALSE_FRIEND
+
+  - LOANWORD
+
+
+  Answer with only one label: TRUE_COGNATE, FALSE_FRIEND, or LOANWORD.
+
+
+  Definitions:
+
+
+  TRUE_COGNATE:
+
+  Words that share a common Semitic root AND have semantically overlapping meanings.
+
+  At least one core meaning must be present in both languages.
+
+
+  FALSE_FRIEND:
+
+  Words that have similar orthographic or phonological forms BUT have completely different
+  meanings, with no meaningful semantic overlap.
+
+
+  LOANWORD:
+
+  Words that are borrowed from one language into another, resulting in similar forms
+  without a shared Semitic root.
+
+
+  Arabic: {{arabic}}
+
+  Hebrew: {{hebrew}}
+
+
+  Answer:'
+filter_list:
+- filter:
+  - function: regex
+    regex_pattern: (TRUE_COGNATE|FALSE_FRIEND|LOANWORD)
+  - function: take_first
+  name: extract-label
+generation_kwargs:
+  do_sample: false
+  max_gen_toks: 20
+  until:
+  - </s>
+metadata:
+  description: 3-class cognate identification (TC/FF/LW) with undiacritized words
+  format: undiac
+  task_type: 3class
+  version: 1.0
+metric_list:
+- aggregation: mean
+  higher_is_better: true
+  metric: exact_match
+output_type: generate_until
+task: cognate_3class_undiac
+test_split: test

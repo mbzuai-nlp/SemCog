@@ -1,0 +1,64 @@
+dataset_kwargs:
+  data_files:
+    test: data/2class_uroman.jsonl
+dataset_path: json
+doc_to_target: '{{label}}'
+doc_to_text: 'You are given an Arabic word and a Hebrew word in transliteration by
+  uroman.
+
+
+  Your task is to determine whether they are:
+
+  - TRUE_COGNATE
+
+  - FALSE_FRIEND
+
+
+  Answer with only one label: TRUE_COGNATE or FALSE_FRIEND.
+
+
+  Definitions:
+
+
+  TRUE_COGNATE:
+
+  Words that share a common Semitic root AND have semantically overlapping meanings.
+
+  At least one core meaning must be present in both languages.
+
+
+  FALSE_FRIEND:
+
+  Words that have similar orthographic or phonological forms BUT have completely different
+  meanings, with no meaningful semantic overlap.
+
+
+  Arabic: {{arabic}}
+
+  Hebrew: {{hebrew}}
+
+
+  Answer:'
+filter_list:
+- filter:
+  - function: regex
+    regex_pattern: (TRUE_COGNATE|FALSE_FRIEND)
+  - function: take_first
+  name: extract-label
+generation_kwargs:
+  do_sample: false
+  max_gen_toks: 20
+  until:
+  - </s>
+metadata:
+  description: 2-class cognate identification (TC/FF only) with uroman transliteration
+  format: uroman
+  task_type: 2class
+  version: 1.0
+metric_list:
+- aggregation: mean
+  higher_is_better: true
+  metric: exact_match
+output_type: generate_until
+task: cognate_2class_uroman
+test_split: test

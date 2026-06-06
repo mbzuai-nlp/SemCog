@@ -1,0 +1,58 @@
+{
+  "task": "semantic_disambiguation_sentence_level",
+  "description": "Arabic-Hebrew semantic disambiguation at sentence level with different input formats",
+  "labels": ["A", "B", "C"],
+  "label_meanings": {
+    "A": "Sentence A is semantically appropriate",
+    "B": "Sentence B is semantically appropriate",
+    "C": "Both sentences are appropriate"
+  },
+  "color_scheme": {
+    "undiac": "green",
+    "diac": "orange",
+    "uroman": "cyan",
+    "ipa": "violet"
+  },
+  "prompts": {
+    "undiac": {
+      "name": "Semantic disambiguation / sentence level / undiac",
+      "color": "green!60!black",
+      "template": "You are provided with two sentences: one written in the Arabic script and one in the Hebrew script. Which sentence is semantically appropriate?\n\nA. {sent_a}\n\nB. {sent_b}\n\nC. Both sentences are appropriate.\n\nProvide only the corresponding letter (A, B, or C) as the response.\n\nAnswer:",
+      "variables": ["sent_a", "sent_b"],
+      "data_fields": {
+        "sent_a": "source_sentence",
+        "sent_b": "target_corrupted_sentence"
+      }
+    },
+    "diac": {
+      "name": "Semantic disambiguation / sentence level / diac",
+      "color": "orange!60!black",
+      "template": "You are provided with two fully diacritized sentences: one in Arabic script and one in Hebrew script. Which sentence is semantically appropriate?\n\nA. {sent_a}\n\nB. {sent_b}\n\nC. Both sentences are appropriate.\n\nProvide only the corresponding letter (A, B, or C) as the response.\n\nAnswer:",
+      "variables": ["sent_a", "sent_b"],
+      "data_fields": {
+        "sent_a": "source_sentence_diac",
+        "sent_b": "target_corrupted_sentence_diac"
+      }
+    },
+    "uroman": {
+      "name": "Semantic disambiguation / sentence level / uroman",
+      "color": "cyan!60!black",
+      "template": "You are provided with two sentences in transliteration by uroman: one from Arabic and one from Hebrew. Which sentence is semantically appropriate?\n\nA. {sent_a}\n\nB. {sent_b}\n\nC. Both sentences are appropriate.\n\nProvide only the corresponding letter (A, B, or C) as the response.\n\nAnswer:",
+      "variables": ["sent_a", "sent_b"],
+      "data_fields": {
+        "sent_a": "source_sentence_uroman",
+        "sent_b": "target_corrupted_sentence_uroman"
+      }
+    },
+    "ipa": {
+      "name": "Semantic disambiguation / sentence level / ipa",
+      "color": "violet!60!black",
+      "template": "You are provided with two sentences in IPA transcription: one from Arabic and one from Hebrew. Which sentence is semantically appropriate?\n\nA. {sent_a}\n\nB. {sent_b}\n\nC. Both sentences are appropriate.\n\nProvide only the corresponding letter (A, B, or C) as the response.\n\nAnswer:",
+      "variables": ["sent_a", "sent_b"],
+      "data_fields": {
+        "sent_a": "source_sentence_ipa",
+        "sent_b": "target_corrupted_sentence_ipa"
+      }
+    }
+  }
+}

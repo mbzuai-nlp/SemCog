@@ -1,0 +1,57 @@
+{
+  "task": "cognate_identification_word_level_2class",
+  "description": "Arabic-Hebrew cognate identification (2-class: TRUE_COGNATE vs FALSE_FRIEND only, no LOANWORD) at word level",
+  "labels": ["TRUE_COGNATE", "FALSE_FRIEND"],
+  "definitions": {
+    "TRUE_COGNATE": "Words that share a common Semitic root AND have semantically overlapping meanings. At least one core meaning must be present in both languages.",
+    "FALSE_FRIEND": "Words that have similar orthographic or phonological forms BUT have completely different meanings, with no meaningful semantic overlap."
+  },
+  "color_scheme": {
+    "undiac": "red",
+    "diac": "blue",
+    "uroman": "teal",
+    "ipa": "purple"
+  },
+  "prompts": {
+    "undiac": {
+      "name": "Cognate identification / 2-class / word level / undiac",
+      "color": "red!60!black",
+      "template": "You are given an Arabic word and a Hebrew word.\n\nYour task is to determine whether they are:\n- TRUE_COGNATE\n- FALSE_FRIEND\n\nAnswer with only one label: TRUE_COGNATE or FALSE_FRIEND.\n\nDefinitions:\n\nTRUE_COGNATE:\nWords that share a common Semitic root AND have semantically overlapping meanings.\nAt least one core meaning must be present in both languages.\n\nFALSE_FRIEND:\nWords that have similar orthographic or phonological forms BUT have completely different meanings, with no meaningful semantic overlap.\n\nArabic: {arabic_word}\nHebrew: {hebrew_word}\n\nAnswer:",
+      "variables": ["arabic_word", "hebrew_word"],
+      "data_fields": {
+        "arabic_word": "arabic.arabic_undiac",
+        "hebrew_word": "hebrew.hebrew_undiac"
+      }
+    },
+    "diac": {
+      "name": "Cognate identification / 2-class / word level / diac",
+      "color": "blue!60!black",
+      "template": "You are given a fully diacritized Arabic word and a fully diacritized Hebrew word.\n\nYour task is to determine whether they are:\n- TRUE_COGNATE\n- FALSE_FRIEND\n\nAnswer with only one label: TRUE_COGNATE or FALSE_FRIEND.\n\nDefinitions:\n\nTRUE_COGNATE:\nWords that share a common Semitic root AND have semantically overlapping meanings.\nAt least one core meaning must be present in both languages.\n\nFALSE_FRIEND:\nWords that have similar diacritized forms (matching consonantal skeletons AND vowel patterns) BUT have completely different meanings, with no meaningful semantic overlap.\n\nArabic: {arabic_word_diac}\nHebrew: {hebrew_word_diac}\n\nAnswer:",
+      "variables": ["arabic_word_diac", "hebrew_word_diac"],
+      "data_fields": {
+        "arabic_word_diac": "arabic.arabic_diac",
+        "hebrew_word_diac": "hebrew.hebrew_diac"
+      }
+    },
+    "uroman": {
+      "name": "Cognate identification / 2-class / word level / uroman",
+      "color": "teal!60!black",
+      "template": "You are given an Arabic word and a Hebrew word in transliteration by uroman.\n\nYour task is to determine whether they are:\n- TRUE_COGNATE\n- FALSE_FRIEND\n\nAnswer with only one label: TRUE_COGNATE or FALSE_FRIEND.\n\nDefinitions:\n\nTRUE_COGNATE:\nWords that share a common Semitic root AND have semantically overlapping meanings.\nAt least one core meaning must be present in both languages.\n\nFALSE_FRIEND:\nWords that have similar romanized forms (reflecting similar phonological or orthographic structure) BUT have completely different meanings, with no meaningful semantic overlap.\n\nArabic: {arabic_word_uroman}\nHebrew: {hebrew_word_uroman}\n\nAnswer:",
+      "variables": ["arabic_word_uroman", "hebrew_word_uroman"],
+      "data_fields": {
+        "arabic_word_uroman": "arabic.arabic_uroman",
+        "hebrew_word_uroman": "hebrew.hebrew_uroman"
+      }
+    },
+    "ipa": {
+      "name": "Cognate identification / 2-class / word level / ipa",
+      "color": "purple!60!black",
+      "template": "You are given an Arabic word and a Hebrew word in IPA transcription.\n\nYour task is to determine whether they are:\n- TRUE_COGNATE\n- FALSE_FRIEND\n\nAnswer with only one label: TRUE_COGNATE or FALSE_FRIEND.\n\nDefinitions:\n\nTRUE_COGNATE:\nWords that share a common Semitic root AND have semantically overlapping meanings.\nAt least one core meaning must be present in both languages.\n\nFALSE_FRIEND:\nWords that have similar phonetic forms in IPA transcription (reflecting similar pronunciation) BUT have completely different meanings, with no meaningful semantic overlap.\n\nArabic: {arabic_word_ipa}\nHebrew: {hebrew_word_ipa}\n\nAnswer:",
+      "variables": ["arabic_word_ipa", "hebrew_word_ipa"],
+      "data_fields": {
+        "arabic_word_ipa": "arabic.arabic_ipa",
+        "hebrew_word_ipa": "hebrew.hebrew_ipa"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Experiment outputs (regenerable)
+results/
+logs/
+*.log
+
+# Model weights and caches
+models/
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+*.npy
+
+# Data caches
+wandb/
+tensorboard/
+.cache/
+*.pkl
+
+# Claude Code
+.claude/
+
+# Backup files
+backup/
+bak/
+*.bak
+
+# Excel temp files
+~$*.xlsx
+~$*.xls

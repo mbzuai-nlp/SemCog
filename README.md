@@ -201,15 +201,6 @@ Each entry contains:
 - Type label (TRUE_COGNATE, FALSE_FRIEND, LOANWORD)
 - Semantic fields and example sentences
 
-### Input Formats
-
-| Format | Description | Example |
-|--------|-------------|---------|
-| `undiac` | Undiacritized script | كتاب / ספר |
-| `diac` | Fully diacritized script | كِتَاب / סֵפֶר |
-| `uroman` | Uroman transliteration | kitAb / sefer |
-| `ipa` | IPA transcription | /kitaab/ / /sefer/ |
-
 ## Prompt Files
 
 All prompt templates are in `prompts/`:

@@ -240,3 +240,21 @@ Each JSON prompt file contains:
 ## License
 
 This project is for research purposes. Please cite appropriately if you use this dataset or methodology.
+
+## Reference:
+
+If you find the code or data in this repo helpful, please cite our [paper](https://arxiv.org/abs/2606.13218):
+
+```bibtex
+@misc{liang2026similarmeansdifferentevaluating,
+      title={When Similar Means Different: Evaluating LLMs on Arabic--Hebrew Cognates}, 
+      author={Junhong Liang and Noor Abo Mokh and Bashar Alhafni},
+      year={2026},
+      eprint={2606.13218},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2606.13218}, 
+}
+```
+
+
